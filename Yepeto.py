@@ -67,11 +67,11 @@ for v in prob.variables():
 print('\n')
 
 
-unidades_prod = []
+unidades_prod1 = []
 #Forma 2
 for p in PRODUCTOS:
     print(f'Unidades producidas de {p}: ' + str(x[(p)].varValue))
-    unidades_prod.append(x[(p)].varValue)
+    unidades_prod1.append(x[(p)].varValue)
 
 print('\n')
 
