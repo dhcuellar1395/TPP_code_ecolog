@@ -69,11 +69,11 @@ def Ejecuta_Yepeto():
     print('\n')
     
     
-    unidades_prod1 = []
+    unidades_prod2 = []
     #Forma 2
     for p in PRODUCTOS:
         print(f'Unidades producidas de {p}: ' + str(x[(p)].varValue))
-        unidades_prod1.append(x[(p)].varValue)
+        unidades_prod2.append(x[(p)].varValue)
     
     print('\n')
     
@@ -92,4 +92,4 @@ def Ejecuta_Yepeto():
     #Valor de la función objetivo
     print("La utilidad de Yepeto es: ",lp.value(prob.objective))
     
-    return unidades_prod1
+    return unidades_prod2
