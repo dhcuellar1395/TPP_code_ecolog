@@ -3,7 +3,6 @@ from pulp import LpVariable, LpProblem, LpMaximize, LpInteger
 #cada vez que usemos un objeto de este módulo
 import pulp as lp
 
-
 def Ejecuta_Yepeto():
     
     #Conjuntos
