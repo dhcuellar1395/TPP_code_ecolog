@@ -31,7 +31,7 @@ def Corre_Modelo_Matematico(V, M, K, fwd, rev, Cij, fik, qik, Mk, dk):
     #prob.solve(lp.PULP_CBC_CMD(msg=0))
     prob.solve()
     
-    print("\t\tOF = "+str(lp.value(prob.objective))+"$")
+    #print("\t\tOF = "+str(lp.value(prob.objective))+"$")
     FO = lp.value(prob.objective)
     Info_Nodes = {}
     Info_Nodes[0]=[]
@@ -41,23 +41,22 @@ def Corre_Modelo_Matematico(V, M, K, fwd, rev, Cij, fik, qik, Mk, dk):
 
     for i in M:
         if y[(i)].varValue > 0:
-            print(f'Prov select {i}: ' + str(y[(i)].varValue))
+            #print(f'Prov select {i}: ' + str(y[(i)].varValue))
             Info_Nodes[0].append(i)
         else:
             Info_Nodes[1].append(i)
             
-            
     for (i,k) in fik.keys():
         if z[(i,k)].varValue > 0:
-            print(f'Prov {i} vende {k}: ' + str(z[(i,k)].varValue))
+            #print(f'Prov {i} vende {k}: ' + str(z[(i,k)].varValue))
             Compra[i].append(k)
     
     Route = []
     for (i,j) in Cij.keys():
         if x[(i,j)].varValue > 0:
-            print(f'De {i} voy a {j}: ' + str(x[(i,j)].varValue))
+            #print(f'De {i} voy a {j}: ' + str(x[(i,j)].varValue))
             Route.append((i,j))
-    
+    print("El modelo matemático encontró la solución óptima")
     return FO, Route, Compra, Info_Nodes
 
 def Dibuja_Ruta(Route, Nodes_out, coor):   
