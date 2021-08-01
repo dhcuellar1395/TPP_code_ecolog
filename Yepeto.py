@@ -90,3 +90,4 @@ def Yepeto_function():
 
    #Valor de la función objetivo
    print("La utilidad de Yepeto es: ",lp.value(prob.objective))
+   return unidades_prod
