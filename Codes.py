@@ -213,17 +213,35 @@ def Dibuja_Ruta(Route, Nodes_out, coor, Valores):
         "linewidths": 1,
         "width": 1,
     }
-    fig, ax = plt.subplots()
-    nx.draw_networkx(G, coor, **options)
-    # Set margins for the axes so that nodes aren't clipped
-    ax = plt.gca()
-    ax.margins(0.20)
-    plt.axis('on')
-    ax.tick_params(left=True, bottom=True, labelleft=True, labelbottom=True)
-    plt.xlabel('Longitud') 
-    plt.ylabel('Latitud')
-    plt.title('Ruta óptima') 
-    plt.show()  
     
-    plt.bar(Valores[0], Valores[1])
-    plt.show()  
+    fig, axs = plt.subplots(1, 2, figsize=(10,5))
+
+    nx.draw_networkx(G, coor,ax=axs[1], **options)
+    # Set margins for the axes so that nodes aren't clipped
+    axs[1] = plt.gca()
+    axs[1].margins(0.20)
+    axs[1].axis('on')
+    
+    axs[1].tick_params(left=True, bottom=True, labelleft=True, labelbottom=True)
+    axs[1].set_xlabel('Longitud') 
+    axs[1].set_ylabel('Latitud')
+    axs[1].set_title('Ruta óptima') 
+    #plt.show()  
+    
+    axs[0].bar(Valores[0], Valores[1])
+    axs[0].set_title('Indicadores') 
+    fig.tight_layout()
+    plt.show()
+ 
+def asignar_objetivo(objetivo):
+    if objetivo == 'Optimizar ruta':
+        Valores, Ruta, Compra, Info_prov = Corre_Modelo_Matematico(V, M, K, fwd, rev, Cij, fik, qik, Mk, dk, 3 )
+        Dibuja_Ruta(Ruta, Info_prov[1], coor1, Valores)
+    elif objetivo == 'Optimizar compra':
+        Valores, Ruta, Compra, Info_prov = Corre_Modelo_Matematico(V, M, K, fwd, rev, Cij, fik, qik, Mk, dk, 2 )
+        Dibuja_Ruta(Ruta, Info_prov[1], coor1, Valores)
+    elif objetivo == 'Optimizar ambas':
+        Valores, Ruta, Compra, Info_prov = Corre_Modelo_Matematico(V, M, K, fwd, rev, Cij, fik, qik, Mk, dk, 1 )
+        Dibuja_Ruta(Ruta, Info_prov[1], coor1, Valores)
+    
+    
