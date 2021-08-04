@@ -234,6 +234,7 @@ def Dibuja_Ruta(Route, Nodes_out, coor, Valores):
     plt.show()
  
 def asignar_objetivo(objetivo):
+    V, M, K, fwd, rev, Cij, fik, qik, Mk, dk, coor1= Carga_Datos()
     if objetivo == 'Optimizar ruta':
         Valores, Ruta, Compra, Info_prov = Corre_Modelo_Matematico(V, M, K, fwd, rev, Cij, fik, qik, Mk, dk, 3 )
         Dibuja_Ruta(Ruta, Info_prov[1], coor1, Valores)
